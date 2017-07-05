@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
-use DB;
+use DB, Carbon;
 
 class ArticleController extends Controller
 {
@@ -12,6 +12,32 @@ class ArticleController extends Controller
 	{
 		$article = Article::paginate(4);
 		return view('article.index', ['article' => $article]);
+	}
+
+	public function updateArticle(Request $request)
+	{
+		$id = $request->id;
+		$tanggal = Carbon\Carbon::now()->toDateTimeString();
+
+		$data = [
+			'judul' => $request->judul,
+			'isi' => $request->isi,
+			'kategori' => $request->kategori,
+			'author_id' => $request->author_id,
+			'tanggal' => $tanggal
+		];
+
+		if ($request->hasFile('foto')) {
+			$foto = $request->file('foto');
+			$nama = $foto->getClientOriginalName();
+			$dir  = public_path(). '/img/article/';
+			$foto->move($dir, $nama);
+			$data['foto'] = $nama;
+		}
+
+		Article::find($id)->update($data);
+
+		return redirect()->route('article');
 	}
 
 	public function editArticle(Request $request)
@@ -22,7 +48,7 @@ class ArticleController extends Controller
 					->get();
 		return view ('article.edit', ['article' => $article]);	
 	}
-	
+
 	public function showArticle()
 	{
 		$article = Article::paginate(2);

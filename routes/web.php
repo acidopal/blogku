@@ -25,3 +25,5 @@ Route::get('/article', 'ArticleController@index')->name('article');
 
 Route::get('/article/edit/{id}', 'ArticleController@editArticle')->name('editArticle');
 
+Route::post('/updateArticle', 'ArticleController@updateArticle')->name('updateArticle');
+

@@ -9,40 +9,42 @@
                                 <h4 class="title">Edit Article</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                <form action="{{route('updateArticle')}}" method="POST" enctype="multipart/form-data"> 
+                                {{ csrf_field()}}
+                                @foreach($article as $editArticle)
                                   <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Judul</label>
-                                                <input type="text" class="form-control" placeholder="Input Judul" value="" name="judul">
+                                                <input type="text" class="form-control" placeholder="Input Judul" value="{{$editArticle->judul}}" name="judul">
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Isi</label>
-                                                <textarea rows="5" class="form-control" placeholder="Write Content" value="" name="isi"></textarea>
+                                                <textarea rows="5" class="form-control" placeholder="Write Content" value="{{$editArticle->isi}}" name="isi">{{$editArticle->isi}}</textarea>
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Kategori</label>
-                                                <input type="text" class="form-control" placeholder="Kategori" value="" name="kategori"> 
+                                                <input type="text" class="form-control" placeholder="Kategori" value="{{$editArticle->kategori}}" name="kategori"> 
                                             </div>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="number" class="form-control" placeholder="ZIP Code">
+                                                <label>Upload Foto</label>
+                                                <input type="file" class="form-control" name="foto">
                                             </div>
                                         </div>
                                     </div>
-
+                                    <input type="hidden" class="form-control" placeholder="" value="{{ $editArticle->id }}" name="id">
+                                    <input type="hidden" class="form-control" placeholder="" value="{{ $editArticle->author_id }}" name="author_id">
+                                    @endforeach
                                     <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
                                     <div class="clearfix"></div>
                                 </form>
