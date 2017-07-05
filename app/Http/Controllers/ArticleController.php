@@ -8,11 +8,12 @@ use DB;
 
 class ArticleController extends Controller
 {
-    
 	public function index()
 	{
-		return view('article.index');
+		$article = Article::paginate(4);
+		return view('article.index', ['article' => $article]);
 	}
+
 	public function showArticle()
 	{
 		$article = Article::paginate(2);
@@ -21,7 +22,6 @@ class ArticleController extends Controller
 
 	public function readArticle(Request $request)
 	{
-
 		$id = $request->id;
 		$article = DB::table('article')
 					->where('id', $id)

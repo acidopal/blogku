@@ -16,6 +16,10 @@
 });*/
 
 Auth::routes();
-Route::get('/dashboard','DashboardController@index')->name('dashboard');
 Route::get('/', 'ArticleController@showArticle')->name('home');
+
+Route::get('/dashboard','DashboardController@index')->name('dashboard');
+
 Route::get('/read/{id}','ArticleController@readArticle')->name('readArticle');
+Route::get('/article', 'ArticleController@index')->name('article');
+
