@@ -19,4 +19,3 @@ Auth::routes();
 Route::get('/dashboard','DashboardController@index')->name('dashboard');
 Route::get('/', 'ArticleController@showArticle')->name('home');
 Route::get('/read/{id}','ArticleController@readArticle')->name('readArticle');
-//Route::get('/home', 'HomeController@index')->name('home');
