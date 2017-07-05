@@ -19,6 +19,7 @@
                                     	<th>Foto</th>
                                     	<th>Author</th>
                                     	<th>Tanggal</th>
+                                    	<th>Action</th>
                                     </thead>
                                     <tbody>
                                     @foreach($article as $listArticle)
@@ -27,14 +28,17 @@
                                         	<td>{{ $listArticle->judul }}</td>
                                         	<td>{{ $listArticle->isi }}</td>
                                         	<td>{{ $listArticle->kategori }}</td>
-                                        	<td>{{ $listArticle->foto }}</td>
+                                        	<td><img src="{{url('img/article')}}/{{ $listArticle->foto }}" width="30" height="30"></td>
                                         	<td>{{ $listArticle->author_id }}</td>
                                         	<td>{{ $listArticle->tanggal }}</td>
+                                       		<td> <a href="/edit/{{$listArticle->id}}"> Edit </a> 
+                                       		     <a href="/delete/{{$listArticle->id}}"> Delete </a> 
+                                       	    </td>
                                         </tr>
                                      @endforeach
                                     </tbody>
                                 </table>
-
+                                <center>{{$article->links()}}</center>
                             </div>
                         </div>
                     </div>
