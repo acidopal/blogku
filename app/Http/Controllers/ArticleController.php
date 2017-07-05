@@ -14,6 +14,15 @@ class ArticleController extends Controller
 		return view('article.index', ['article' => $article]);
 	}
 
+	public function editArticle(Request $request)
+	{
+		$id = $request->id;
+		$article = DB::table('article')
+					->where('id', $id)
+					->get();
+		return view ('article.edit', ['article' => $article]);	
+	}
+	
 	public function showArticle()
 	{
 		$article = Article::paginate(2);

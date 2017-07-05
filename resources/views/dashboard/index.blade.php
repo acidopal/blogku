@@ -1,4 +1,7 @@
 @extends('dashboard.partials.main')
+@section('title-page')
+   <a class="navbar-brand" href="#">Dashboard</a>
+@endsection
 @section('content')
         <div class="content">
             <div class="container-fluid">

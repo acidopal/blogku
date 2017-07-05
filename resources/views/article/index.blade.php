@@ -1,4 +1,7 @@
 @extends('dashboard.partials.main')
+@section('title-page')
+   <a class="navbar-brand" href="#">Article</a>
+@endsection
 @section('content')
 	        <div class="content">
             <div class="container-fluid">
@@ -31,8 +34,8 @@
                                         	<td><img src="{{url('img/article')}}/{{ $listArticle->foto }}" width="30" height="30"></td>
                                         	<td>{{ $listArticle->author_id }}</td>
                                         	<td>{{ $listArticle->tanggal }}</td>
-                                       		<td> <a href="/edit/{{$listArticle->id}}"> Edit </a> 
-                                       		     <a href="/delete/{{$listArticle->id}}"> Delete </a> 
+                                       		<td> <a href="/article/edit/{{$listArticle->id}}"> Edit </a> 
+                                       		     <a href="/article/delete/{{$listArticle->id}}"> Delete </a> 
                                        	    </td>
                                         </tr>
                                      @endforeach
