@@ -27,3 +27,10 @@ Route::get('/article/edit/{id}', 'ArticleController@editArticle')->name('editArt
 
 Route::post('/updateArticle', 'ArticleController@updateArticle')->name('updateArticle');
 
+
+Route::get('/article/add', 'ArticleController@addArticle')->name('addArticle');
+Route::post('/article/addArticleProses', 'ArticleController@addArticleProses')->name('addArticleProses');
+
+Route::get('/article/delete/{id}', 'ArticleController@deleteArticle')->name('deleteArticle');
+
+
